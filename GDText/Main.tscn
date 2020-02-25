@@ -5,6 +5,8 @@
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = 0.292358
+margin_right = 0.292358
 rect_min_size = Vector2( 50, 50 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -15,20 +17,71 @@ __meta__ = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.341176, 0.341176, 0.407843, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="TextEdit" type="TextEdit" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 32.0
 __meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="FileMenu" type="MenuButton" parent="."]
+margin_left = 9.9751
+margin_top = 5.0
+margin_right = 64.9751
+margin_bottom = 34.0
+text = "File"
+align = 0
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HelpMenu" type="MenuButton" parent="."]
+margin_left = 70.0
+margin_top = 5.0
+margin_right = 121.0
+margin_bottom = 34.0
+text = "Help"
+align = 0
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="SaveDialog" type="FileDialog" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -264.0
+margin_top = -173.0
+margin_right = 267.0
+margin_bottom = 171.0
+popup_exclusive = true
+window_title = "Save File"
+resizable = true
+access = 2
+show_hidden_files = true
+current_dir = "/home"
+current_path = "/home/"
+__meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="OpenDialog" type="FileDialog" parent="."]
-margin_left = 128.0
-margin_top = 117.0
-margin_right = 656.0
-margin_bottom = 461.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -264.0
+margin_top = -172.0
+margin_right = 264.0
+margin_bottom = 172.0
 popup_exclusive = true
 window_title = "Open a File"
 resizable = true
@@ -41,65 +94,39 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SaveDialog" type="FileDialog" parent="."]
-margin_left = 320.0
-margin_top = 143.0
-margin_right = 848.0
-margin_bottom = 487.0
-popup_exclusive = true
-window_title = "Save File"
-resizable = true
-access = 2
-show_hidden_files = true
-current_dir = "/home"
-current_path = "/home/"
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="FileMenu" type="MenuButton" parent="."]
-margin_left = 9.9751
-margin_top = 5.0
-margin_right = 64.9751
-margin_bottom = 34.0
-text = "File"
-align = 0
-switch_on_hover = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="HelpMenu" type="MenuButton" parent="."]
-margin_left = 70.0
-margin_top = 5.0
-margin_right = 121.0
-margin_bottom = 34.0
-text = "Help"
-align = 0
-switch_on_hover = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="AboutDialog" type="WindowDialog" parent="."]
-margin_left = 325.721
-margin_top = 161.492
-margin_right = 659.721
-margin_bottom = 337.492
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -167.0
+margin_top = -88.0
+margin_right = 167.0
+margin_bottom = 88.0
 window_title = "About"
 resizable = true
 
 [node name="Label" type="Label" parent="AboutDialog"]
-margin_left = 9.29236
-margin_top = 17.0
-margin_right = 319.292
-margin_bottom = 164.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -155.0
+margin_top = -73.5
+margin_right = 155.0
+margin_bottom = 73.5
 size_flags_stretch_ratio = 0.0
 text = "GDText is a simple and open source text edditor
- licenced under the GNU/GPL3 licence"
+ licenced under the GNU/GPL3 licence
+
+
+
+
+
+GitHub: https://github.com/Valerioooo/GDText"
 align = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="file_selected" from="OpenDialog" to="." method="_on_OpenDialog_file_selected"]
 [connection signal="file_selected" from="SaveDialog" to="." method="_on_SaveDialog_file_selected"]
+[connection signal="file_selected" from="OpenDialog" to="." method="_on_OpenDialog_file_selected"]
