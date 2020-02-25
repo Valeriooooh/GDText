@@ -7,6 +7,14 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 50, 50 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.341176, 0.341176, 0.407843, 1 )
 
 [node name="TextEdit" type="TextEdit" parent="."]
 anchor_right = 1.0
@@ -50,9 +58,10 @@ __meta__ = {
 }
 
 [node name="FileMenu" type="MenuButton" parent="."]
-margin_left = 10.9751
-margin_right = 65.9751
-margin_bottom = 29.0
+margin_left = 9.9751
+margin_top = 5.0
+margin_right = 64.9751
+margin_bottom = 34.0
 text = "File"
 align = 0
 switch_on_hover = true
@@ -61,9 +70,10 @@ __meta__ = {
 }
 
 [node name="HelpMenu" type="MenuButton" parent="."]
-margin_left = 72.0
-margin_right = 123.0
-margin_bottom = 29.0
+margin_left = 70.0
+margin_top = 5.0
+margin_right = 121.0
+margin_bottom = 34.0
 text = "Help"
 align = 0
 switch_on_hover = true
