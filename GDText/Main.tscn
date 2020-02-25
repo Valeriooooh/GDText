@@ -27,7 +27,7 @@ resizable = true
 mode = 0
 access = 2
 show_hidden_files = true
-current_dir = "/home/"
+current_dir = "/home"
 current_path = "/home/"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -43,7 +43,7 @@ window_title = "Save File"
 resizable = true
 access = 2
 show_hidden_files = true
-current_dir = "/home/"
+current_dir = "/home"
 current_path = "/home/"
 __meta__ = {
 "_edit_use_anchors_": false
