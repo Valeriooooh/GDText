@@ -9,12 +9,24 @@ func _ready() -> void:
 
 #File Menu
 	$FileMenu.get_popup().add_item("New File")
+	_shortcut(0 ,KEY_N, false)
 	$FileMenu.get_popup().add_item("Open File")
+	_shortcut(1, KEY_O, false)
 	$FileMenu.get_popup().add_item("Save")
+	_shortcut(2,KEY_S, false)
 	$FileMenu.get_popup().add_item("Save as ...")
+	_shortcut(3, KEY_A, true)
 	$FileMenu.get_popup().add_item("Quit")
+	_shortcut(4, KEY_Q, false)
+
+	
+	
+
 	$FileMenu.get_popup().connect("id_pressed", self, "_on_Item_pressed")
 #---------------------------------------------------------------------------------
+
+
+
 
 	#help menu
 	$HelpMenu.get_popup().add_item("About")
@@ -75,3 +87,14 @@ func _on_SaveDialog_file_selected(path: String) -> void:#saves the file
 	f.open(path, 2)
 	f.store_string($TextEdit.text)
 	f.close()
+
+func _shortcut(var MenuNum, var _key, var shift):
+	var shortcut = ShortCut.new()
+	var inputeventkey = InputEventKey.new()
+	inputeventkey.set_scancode(_key)
+	inputeventkey.control = true
+	if shift == true:
+		inputeventkey.shift = true
+	shortcut.set_shortcut(inputeventkey) 
+	
+	$FileMenu.get_popup().set_item_shortcut(MenuNum, shortcut, true)
