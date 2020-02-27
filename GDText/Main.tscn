@@ -123,10 +123,21 @@ text = "GDText is a simple and open source text edditor
 
 
 
-GitHub: https://github.com/Valerioooo/GDText"
+GitHub: "
 align = 3
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LinkButton" type="LinkButton" parent="AboutDialog/Label"]
+margin_left = 51.4597
+margin_top = 118.621
+margin_right = 301.46
+margin_bottom = 132.621
+rect_pivot_offset = Vector2( 74.6325, 7 )
+toggle_mode = true
+pressed = true
+text = "https://github.com/Valerioooo/GDText"
 [connection signal="file_selected" from="SaveDialog" to="." method="_on_SaveDialog_file_selected"]
 [connection signal="file_selected" from="OpenDialog" to="." method="_on_OpenDialog_file_selected"]
+[connection signal="pressed" from="AboutDialog/Label/LinkButton" to="." method="_on_LinkButton_pressed"]
