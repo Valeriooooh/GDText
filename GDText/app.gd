@@ -1,8 +1,11 @@
+
+
 extends Control
 
 var app_name = "GDText"
-#const untfile = "Untitled"
-var current_file = "Untitled"#untfile
+
+var current_file = "Untitled"
+
 var lang = 'Simple Text'
 
 func _ready() -> void:
@@ -22,24 +25,25 @@ func _ready() -> void:
 	$FileMenu.get_popup().add_item("Quit")
 	_shortcut(5, KEY_Q, false)
 
-	
-	
-
 	$FileMenu.get_popup().connect("id_pressed", self, "_on_Item_pressed")
 #---------------------------------------------------------------------------------
-
+#ToolsMenu
+	$ToolsMenu.get_popup().add_item()
 
 
 
 	#help menu
 	$HelpMenu.get_popup().add_item("About")
 	$HelpMenu.get_popup().connect("id_pressed", self, "_on_Item_help_pressed")
-#---------------------------------------------------------------------------------
-
+	
+	if lang != 'Simple Text':
+		$TextEdit.set_syntax_coloring(true)
+		if lang == 'HTML':
+			$TextEdit.add_keyword_color ("*", ("cyan"))
+	
 
 func update_window_title():#updates the window title adding the file name after
 	OS.set_window_title(app_name + ' - ' + current_file + ' (' + lang + ')')
-	
 
 func _on_Item_pressed(id):#Checks the options
 	var file_item_name = $FileMenu.get_popup().get_item_text(id)
@@ -57,27 +61,29 @@ func _on_Item_pressed(id):#Checks the options
 		new_file()
 	elif file_item_name == 'Run File':
 		_runFile(current_file)
-	
+
+func _on_Item_help_pressed(id):
+	var help_item_name = $HelpMenu.get_popup().get_item_text(id)
+	if help_item_name == 'About':
+		$AboutDialog.popup()
+
 func new_file():#sets the file to blank and untitled
 	current_file = "Untitled"
 	update_window_title()
 	$TextEdit.text = ''
-	
+
 func save_file():#saves the file
 	if current_file == "Untitled":
 		$SaveDialog.popup()
+		lang = getlang(current_file)
 	else:
 		var f = File.new()
 		f.open(current_file, 2)
 		f.store_string($TextEdit.text)
 		f.close()
+		lang = getlang(current_file)
 		update_window_title()
-	
-func _on_Item_help_pressed(id):
-	var help_item_name = $HelpMenu.get_popup().get_item_text(id)
-	if help_item_name == 'About':
-		$AboutDialog.popup()
-	
+
 func _on_OpenDialog_file_selected(path: String) -> void: #opens the file to read
 	## print(path)#debug
 	var f = File.new()
@@ -85,6 +91,7 @@ func _on_OpenDialog_file_selected(path: String) -> void: #opens the file to read
 	$TextEdit.text = f.get_as_text()
 	f.close()
 	current_file = path
+	lang = getlang(current_file)
 	update_window_title()
 
 func _on_SaveDialog_file_selected(path: String) -> void: #saves the file 
@@ -93,10 +100,10 @@ func _on_SaveDialog_file_selected(path: String) -> void: #saves the file
 	f.store_string($TextEdit.text)
 	f.close()
 	current_file = path
+	lang = getlang(current_file)
 	update_window_title()
-	
-#creates the shortcuts for the menu
-func _shortcut(var MenuNum, var _key, var shift):
+
+func _shortcut(var MenuNum, var _key, var shift):#creates the shortcuts for the menu
 	var shortcut = ShortCut.new()
 	var inputeventkey = InputEventKey.new()
 	inputeventkey.set_scancode(_key)
@@ -107,14 +114,23 @@ func _shortcut(var MenuNum, var _key, var shift):
 	
 	$FileMenu.get_popup().set_item_shortcut(MenuNum, shortcut, true)
 
-
-func _runFile(file):
+func getlang(file):#gets the language of the current program
 	if file.ends_with(".html") or file.ends_with(".htm"): 
 		lang = "HTML"
-		OS.shell_open(file)
 	elif file.ends_with(".py"):
 		lang = "Python"
-		#OS.shell_open("")
+	return lang
+
+func _runFile(file):#self explanatory :)
+	if lang == 'HTML':
+		OS.shell_open(file)
+	elif lang == 'Python':
+		OS.shell_open("")
 
 func _on_LinkButton_pressed() -> void:
 	OS.shell_open("https://github.com/Valerioooo/GDText")
+
+func _html_syntax():
+	#
+	for i in ['<!DOCTYPE html>']:
+		$TextEdit.add_keyword_color (i, ("#B03060"))

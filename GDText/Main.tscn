@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://app.gd" type="Script" id=1]
+[ext_resource path="res://Lato-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://menu_font.tres" type="DynamicFont" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 18
+font_data = ExtResource( 2 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -22,18 +28,30 @@ __meta__ = {
 }
 
 [node name="TextEdit" type="TextEdit" parent="."]
-anchor_right = 1.0
+anchor_left = -0.000285506
+anchor_right = 0.999714
 anchor_bottom = 1.0
 margin_top = 32.0
+custom_fonts/font = SubResource( 1 )
+custom_colors/caret_color = Color( 0.65098, 0.65098, 0.65098, 1 )
+highlight_current_line = true
+show_line_numbers = true
+draw_tabs = true
+caret_blink = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="FileMenu" type="MenuButton" parent="."]
+anchor_left = -0.000261189
+anchor_top = -0.00333333
+anchor_right = -0.000261188
+anchor_bottom = -0.00333333
 margin_left = 9.9751
 margin_top = 5.0
 margin_right = 64.9751
 margin_bottom = 34.0
+custom_fonts/font = ExtResource( 3 )
 text = "File"
 align = 0
 switch_on_hover = true
@@ -41,11 +59,33 @@ __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="HelpMenu" type="MenuButton" parent="."]
+[node name="ToolsMenu" type="MenuButton" parent="."]
+anchor_left = -0.00809801
+anchor_top = -0.00333333
+anchor_right = -0.00809801
+anchor_bottom = -0.00333333
 margin_left = 70.0
 margin_top = 5.0
 margin_right = 121.0
 margin_bottom = 34.0
+custom_fonts/font = ExtResource( 3 )
+text = "Tools"
+align = 0
+switch_on_hover = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="HelpMenu" type="MenuButton" parent="."]
+anchor_left = 0.0553786
+anchor_top = -0.00333333
+anchor_right = 0.0553786
+anchor_bottom = -0.00333333
+margin_left = 70.0
+margin_top = 5.0
+margin_right = 121.0
+margin_bottom = 34.0
+custom_fonts/font = ExtResource( 3 )
 text = "Help"
 align = 0
 switch_on_hover = true
