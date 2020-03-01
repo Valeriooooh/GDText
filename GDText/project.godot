@@ -17,9 +17,10 @@ _global_script_class_icons={
 
 config/name="GDText"
 run/main_scene="res://Main.tscn"
-boot_splash/fullsize=false
-boot_splash/use_filter=false
-boot_splash/bg_color=Color( 0, 0, 0, 1 )
+boot_splash/image="res://godot-icon.png"
+config/icon="res://Papirus-Team-Papirus-Apps-Godot.svg"
+config/macos_native_icon="res://Papirus-Team-Papirus-Apps-Godot.svg"
+config/windows_native_icon="res://Papirus-Team-Papirus-Apps-Godot.svg"
 
 [input]
 
