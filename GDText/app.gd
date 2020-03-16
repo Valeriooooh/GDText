@@ -2,6 +2,8 @@ extends Control
 
 var app_name = "GDText"
 
+var currentOS = OS.get_name()
+
 var current_file = "Untitled"
 
 var lang = 'Simple Text'
@@ -138,10 +140,15 @@ func _runFile(file):#self explanatory :)
 	if lang == 'HTML':
 		OS.shell_open(file)
 	elif lang == 'Python':
-		OS.shell_open("")
+		print(currentOS)
+		if currentOS == "X11":
+			var rawargs = ["python", current_file]
+			var args = PoolStringArray(rawargs)
+			OS.execute("/usr/share/applications/org.kde.konsole.desktop", args, false) 
 
 func _on_LinkButton_pressed() -> void:
 	OS.shell_open("https://github.com/Valerioooo/GDText")
+
 
 func _html_syntax():
 	#
