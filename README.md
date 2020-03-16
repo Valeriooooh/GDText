@@ -1,2 +1,2 @@
 # GDText
-A  simple editor made with the Godot Game Engine
+A  simple text editor made with the Godot Game Engine
